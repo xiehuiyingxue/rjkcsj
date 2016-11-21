@@ -13,20 +13,16 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class outboxFrame extends JFrame {
+public class draftsFrame extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 *建立发件箱界面；
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					outboxFrame frame = new outboxFrame();//创建发件箱界面
+					draftsFrame frame = new draftsFrame();//创建发件箱界面
 					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-				    ImageIcon img = new ImageIcon("image/allboxs.jpg");//这是背景图片  
+				    ImageIcon img = new ImageIcon("image/allbox.jpg");//这是背景图片  
 				JLabel imgLabel = new JLabel(img);//将背景图放在标签里。
 				frame.getLayeredPane().add(imgLabel, new Integer(Integer.MIN_VALUE));//注意这里是关键，将背景标签添加到jfram的LayeredPane面板里。  
 				imgLabel.setBounds(0,0,img.getIconWidth(), img.getIconHeight());//设置背景标签的位置  
@@ -41,41 +37,42 @@ public class outboxFrame extends JFrame {
 			}
 		});
 	}
+	/**
+	 * Launch the application.
+	 */
 
 	/**
 	 * Create the frame.
 	 */
-	public outboxFrame() {
+	public draftsFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("发件箱");
-		setBounds(120, 140, 1230, 550);//设置发件箱页面位置以及长宽；
+		setBounds(120, 140, 1230, 550);//设置草稿箱界面的位置以及长宽；
+		setTitle("草稿箱");//设置界面标题；
 		contentPane = new JPanel();
-		contentPane.setToolTipText("");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton returnButton = new JButton("\u8FD4\u56DE");
-		returnButton.addMouseListener(new MouseAdapter() {
+		JButton returnbutton = new JButton("\u8FD4\u56DE");
+		returnbutton.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {//创建返回按钮鼠标点击事件；
-				setVisible(false);//隐藏发件箱界面；
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);//隐藏草稿箱界面；
 			}
 		});
-		returnButton.setBounds(10, 10, 93, 23);
-		contentPane.add(returnButton);
+		returnbutton.setBounds(21, 21, 93, 23);
+		contentPane.add(returnbutton);
 		
 		JButton deletebutton = new JButton("\u5220\u9664");
-		deletebutton.setBounds(56, 43, 93, 23);
+		deletebutton.setBounds(49, 54, 93, 23);
 		contentPane.add(deletebutton);
 		
 		JButton alldeletebutton = new JButton("\u5168\u90E8\u5220\u9664");
-		alldeletebutton.setBounds(212, 43, 93, 23);
+		alldeletebutton.setBounds(216, 54, 93, 23);
 		contentPane.add(alldeletebutton);
 		
 		JButton forwardbutton = new JButton("\u8F6C\u53D1");
-		forwardbutton.setBounds(374, 43, 93, 23);
+		forwardbutton.setBounds(384, 54, 93, 23);
 		contentPane.add(forwardbutton);
 	}
-
 }
